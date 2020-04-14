@@ -9,54 +9,44 @@ public class ElevatorScript : MonoBehaviour
     /// <summary>
     /// I was trying to parent the player to the elevator so they wouldn't stutter when going up it, but it looks harder than I thought. give it a go if you have the time!
     /// </summary>
-    //private GameObject player;
+    private GameObject player;
 
+    public GameObject collisionPlane;
+    public Animator anim;
 
     void Start()
     {
-       // player = GameObject.FindGameObjectWithTag("Player");
+
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        anim = GetComponent<Animator>();
+
     }
 
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-       // player.transform.parent = transform;
+        player.transform.parent = collisionPlane.transform;
 
-        if (isActive == false)
-        {
-            StartCoroutine(ElevatorUp());
-        }
+        StartCoroutine(ElevatorUp());
 
-       
     }
     private void OnTriggerExit(Collider other)
     {
-       // player.transform.parent = null;
+        player.transform.parent = null;
     }
 
     private IEnumerator ElevatorUp()
     {
-        isActive = true;
-        
 
-        float counter = 0f;
-        float duration = 15f;
+        //anim.ElevatorUpActive = true;
 
-        yield return new WaitForSeconds(1f);
+        anim.SetBool("ElevatorUpActive", true);
 
-        while (counter < duration)
-        {
-            counter += Time.deltaTime;
-            transform.localPosition = Vector3.Lerp(new Vector3(-1.557f, -2.753f, -33.758f), new Vector3(-1.557f, 16.048f, -33.758f), counter / duration);
-
-            yield return null;
-
-        }
-
+        yield return new WaitForSeconds(3f);
     }
-
 }
