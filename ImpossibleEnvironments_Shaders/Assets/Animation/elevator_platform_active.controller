@@ -64,9 +64,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: ElevatorUpActive
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: ElevatorUpAcive
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4140477365321053042}
   m_Solo: 0

@@ -47,6 +47,8 @@ public class ElevatorScript : MonoBehaviour
 
         anim.SetBool("ElevatorUpActive", true);
 
+        Debug.Log("111");
+
         yield return new WaitForSeconds(3f);
     }
 }
